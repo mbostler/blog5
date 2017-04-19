@@ -1,0 +1,222 @@
+$body-bg: green;
+// $body-font-color: $jet;
+// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+.top-bar a:hover{
+	color: #037C01;
+	text-decoration: underline;
+}
+
+$light-gray: #e6e6e6;
+$topbar-background: $light-gray;
+$description-color: #999;
+$header-border-color: #ADC;
+$link-background-color: #ADC;
+//$header-border-color: #EEF0FF;
+$body-font: Georgia, serif;
+$article-border-color: #ADC;
+$article-background-color: #F9F9FF;
+
+
+
+.top-bar-left li, .top-bar-right li{
+	padding-top: 24px;
+}
+
+.modal_photo_title{
+	display: block;
+	font-weight: bold;
+}
+
+.modal_photo_pic{
+	display: block;
+	text-align: center;
+}
+
+.modal_photo_desc{
+	display: block;
+	text-align: center;
+	font-style: oblique;
+	color: $description-color;
+}
+
+.modal_photo_edit{
+	display: block;
+	text-align: right;
+}
+
+.modal_photo_pic a{
+	display: block;
+}
+
+ul.nav li{
+	width: 25%;
+	display: inline;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 1.3em;
+}
+
+ul.nav li a{
+	color: grey;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+div.menu_item a:hover{
+	background-color: $header-border-color;
+	color: blue;
+}
+
+div.menu div.menu_item{
+	text-align: center;
+	display: inline-block;
+	text-transform: uppercase;
+	text-align: center;
+	/* 
+	font-size: 1.2em; 
+	*/
+	font-size: rem-calc(20);
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+div.menu div.menu_item a{
+	color: grey;
+	display: block;
+	padding-top: 0.4rem;
+	padding-bottom: 0.4rem;
+	margin-top: 0.2rem;
+	margin-bottom: 0.2rem;
+}
+
+div.main {
+	border-top: 2px double $header-border-color;
+	padding-bottom: 5px;
+	border-bottom: 2px double $header-border-color;
+}
+
+div.noleftpad{
+	padding-left: 0px;
+}
+
+body, h1, h2, h3, h4, h5, h6{
+	font-family: $body-font;
+}
+
+h1{
+	text-align: center;
+	color: black;
+	font-size: rem-calc(100);
+}
+
+@media only screen and (max-width: 500px) {
+
+   h1 { font-size: rem-calc(36); }
+   
+   div.menu div.menu_item{
+   	font-size: rem-calc(12);
+   }
+
+}
+
+h1 a, h1 a:hover{
+	color: black;
+}
+
+div.title{
+	border: 2px dashed black;
+}
+
+div.login{
+	margin-top: 4em;
+	text-align: right;
+}
+
+ul.login li{
+	text-align: right;
+	color: orange;
+}
+
+div.actions {
+	text-align: center;
+}
+
+div.field label{
+	font-weight: bold;
+}
+
+h2{
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+div.footer{
+	font-size: 0.8em;
+	text-align: center;
+}
+
+div.alert{
+	border: 1px solid #a01c1c;
+	background-color: #f2b5b5;
+	color: #a01c1c;
+}
+
+div.alert-box{
+	padding: 0px 10px;
+}
+
+div.alert-box a.close{
+	float: right;
+}
+
+div.content_header h2{
+	display: inline;
+	margin-right: 0.3em;
+}
+
+div.messages{
+	text-align: center;
+}
+
+div.messages div.success{
+	border: 1px dashed green;
+	background-color: #c1f4da;
+}
+
+#articles article{
+	padding: 10px 15px;
+	border: 1px solid $article-border-color;
+	background-color: $article-background-color;
+}
+
+#articles article h3{
+	font-weight: bold;
+	font-size: 1.2rem;
+	margin-bottom: 0px;
+}
+
+article h4, .content_header h4{
+	font-style: italic;
+	font-size: 0.9rem;
+}
+
+.article_actions a{
+	padding: 2px;
+}
+.article_actions a:hover{
+	background-color: $link-background-color;
+	color: black;
+}
+
+div.modal_prev_panel, div.modal_next_panel{
+	width: 50px;
+}
+
+label.role{
+    display: inline;
+    margin-right: 0.6rem;
+    margin-left: 0.1rem;
+}
