@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: content_permissions
+#
+#  id                :integer          not null, primary key
+#  role_id           :integer          not null
+#  content_kind_id   :integer
+#  content_kind_type :string
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role_id: 1
+  content_kind_id: 1
+  content_kind_type: MyString
+
+two:
+  role_id: 1
+  content_kind_id: 1
+  content_kind_type: MyString
