@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 gem 'exception_notification'
 
-gem 'unicorn'
+# gem 'unicorn'
 gem 'paperclip'
 gem 'redcarpet'
 gem 'foundation-rails'
@@ -55,7 +55,8 @@ group :development do
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-bundler'
   gem 'capistrano-rvm'
-  gem 'capistrano-nginx-unicorn'
+  # gem 'capistrano-nginx-unicorn'
+  gem 'capistrano3-puma'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
