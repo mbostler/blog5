@@ -3,7 +3,7 @@ lock '3.5.0'
 
 set :application, 'blog5'
 # set :repo_url, 'ssh://deploy@104.130.8.185:2588/home/deploy/repo/blog5.git'
-set :repo_url, 'ssh://deploy@104.130.8.185:2588/home/deploy/repo/blog5/.git'
+set :repo_url, 'https://github.com/mbostler/blog5.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
