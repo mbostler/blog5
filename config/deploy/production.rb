@@ -30,8 +30,19 @@ server "104.130.8.185", user: 'deploy', roles: %w{app db web}, port: 2588
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 
+namespace :deploy do
 
+  desc "copies latest database.yml to server"
+  task :copy_db_config do
+    run_locally do
+      %x('scp -P 2588 config/database.yml deploy@104.130.8.185:/home/deploy/www/blog5/shared/config')      
+    end
+  end
+  
+  before :starting, :copy_db_config
+end
 
 # Custom SSH Options
 # ==================

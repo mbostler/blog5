@@ -1,7 +1,8 @@
 class CreatePhotos < ActiveRecord::Migration[5.0]
   def self.up
-    change_table :photos do |t|
+    create_table :photos do |t|
       t.attachment :content
+      t.integer :order
     end
   end
 
