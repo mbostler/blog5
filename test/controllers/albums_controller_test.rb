@@ -16,6 +16,10 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create album" do
+    ensure_logged_in
+    puts "@album.author_id is: #{@album.author_id.inspect}"
+    puts "@album.description is: #{@album.description.inspect}"
+    puts "@album.title is: #{@album.title.inspect}"
     assert_difference('Album.count') do
       post albums_url, params: { album: { author_id: @album.author_id, description: @album.description, title: @album.title } }
     end

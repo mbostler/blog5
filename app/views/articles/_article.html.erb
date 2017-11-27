@@ -1,0 +1,23 @@
+<article>
+	<h3><%= link_to article.title, article %></h3>
+	<h4><%= byline( article )%></h4>
+    <% if role_present?( :admin ) %>
+    <h5 class="roles">Roles:<h5>
+        <% if article.roles.any? %>
+            <span class="roles"><%= article.roles.map(&:name).join(', ') %></span>
+        <% else %>
+            <span class="roles">(None.)</span>
+        <% end %>
+    <% end %>
+    <%# TODO: INSTALL MARKDOWN! %>
+	<%# raw markdown article.content %>
+	<%=raw article.content %>
+	<br/>
+	<span class="article_actions">
+		<%= link_to "[see more]", article %>
+	<% if role_present?( "author" ) %>
+        <%= link_to '[edit]', edit_article_path(article) %>
+        <%= link_to '[destroy]', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<% end %>
+	</span>
+</article>

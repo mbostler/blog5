@@ -1,10 +1,10 @@
-<%= form_for(link) do |f| %>
-  <% if link.errors.any? %>
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
 
       <ul>
-      <% link.errors.full_messages.each do |message| %>
+      <% @link.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,25 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
+    <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-
   <div class="field">
-    <%= f.label :url %>
+    <%= f.label :url %><br>
     <%= f.text_field :url %>
   </div>
-
   <div class="field">
-    <%= f.label :source %>
+    <%= f.label :source %><br>
     <%= f.text_field :source %>
   </div>
-
   <div class="field">
-    <%= f.label :description %>
+    <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
-
+  <div class="field">
+      <p>Roles</p>
+      <% sorted_content_permissions( @link ).each do |cp| %>
+          <%= check_box_tag "link[content_permissions_flags][#{cp.role.name}]", "1", is_checked?( @link, cp.role ) %>
+          <%= label_tag "link[content_permissions_flags][#{cp.role.name}]", cp.role.name, {class: "role"} %>
+      <% end %>
+  </div><br/>
   <div class="actions">
     <%= f.submit %>
   </div>

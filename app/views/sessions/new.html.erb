@@ -1,2 +1,30 @@
-<h1>Sessions#new</h1>
-<p>Find me in app/views/sessions/new.html.erb</p>
+<% content_for :content_header do %>
+	<h2>Log In</h2>
+<% end %>
+	<div class="small-3 columns">
+		&nbsp;
+	</div>
+	<div class="small-6 columns">
+	<%= form_tag sessions_path do %>
+	  <div class="field">
+			<%= label_tag :name %>
+			<%= text_field_tag :name, params[:name] %>
+	  </div>
+	  <div class="field">
+			<%= label_tag :password %>
+			<%= password_field_tag :password %>
+	  </div>
+		<div class="actions">
+			<%= submit_tag "Log in" %>
+		</div>
+	<% end %>
+	</div>
+	<div class="small-3 columns">
+		&nbsp;
+	</div>
+
+<%= javascript_tag do -%>
+	$( "a.close" ).click(function() {
+	  $(this).parent().remove();
+	});
+<% end -%>

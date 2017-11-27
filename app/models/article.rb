@@ -12,7 +12,7 @@
 
 class Article < ApplicationRecord
   include PermissionMethods
-  belongs_to :author, class_name: User
+  belongs_to :author, class_name: 'User'
   
   scope :recent, -> { order( created_at: :desc ).limit( 3 ) }
   scope :for, ->( roles ) { includes( :roles ).where( roles: {id: roles.map(&:id)} )}

@@ -7,4 +7,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def ensure_logged_in
+    @userpwd = "testpassword"
+    @user = User.find_or_create_by name: "michael"
+    @user.password = @userpwd
+    @user.save!
+    
+    post sessions_url, params: { name: @user.name, password: @userpwd }
+    assert_redirected_to root_url
+  end
 end

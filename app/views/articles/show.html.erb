@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @article.content %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @article.author_id %>
-</p>
-
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<% content_for :content_header do %>
+	<h2><%= @article.title %></h2>
+	<h4><%= byline( @article )%></h4>
+    <% if role_present?( "admin" )%>
+    <h5 class="roles">Roles:<h5>
+        <% if @article.roles.any? %>
+            <span class="roles"><%= @article.roles.map(&:name).join(', ') %></span>
+        <% else %>
+            <span class="roles">(None.)</span>
+        <% end %>
+    <% end %>
+<% end %>
+<div class="small-12 columns">
+	<article>
+        <%# TODO: INSTALL MARKDOWN! %>
+    	<%# raw markdown article.content %>
+		<%=raw @article.content %>
+		<br/>
+		<% if role_present?( "author" ) %>
+		<span class="article_actions">
+	        <%= link_to '[edit]', edit_article_path(@article) %>
+	        <%= link_to '[destroy]', @article, method: :delete, data: { confirm: 'Are you sure?' } %>
+		</span>
+		<% end %>
+	</article>
+</div>

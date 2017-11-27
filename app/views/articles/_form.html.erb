@@ -1,10 +1,11 @@
-<%= form_for(article) do |f| %>
-  <% if article.errors.any? %>
+<%= form_for(@article) do |f| %>
+	<%= f.hidden_field :author_id %>
+  <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <h2><%= pluralize(@article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
       <ul>
-      <% article.errors.full_messages.each do |message| %>
+      <% @article.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,21 +13,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %>
+    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
 
   <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-
+      <p>Roles</p>
+      <% sorted_content_permissions( @article ).each do |cp| %>
+          <%= check_box_tag "article[content_permissions_flags][#{cp.role.name}]", "1", is_checked?( @article, cp.role ) %>
+          <%= label_tag "article[content_permissions_flags][#{cp.role.name}]", cp.role.name, {class: "role"} %>
+      <% end %>
+  </div><br/>
   <div class="field">
-    <%= f.label :author_id %>
-    <%= f.number_field :author_id %>
+    <%= f.label :content %><br>
+	<div id="epiceditor">
+	    <%= f.text_area :content %>
+	</div>
   </div>
-
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<script>
+	var editor = new EpicEditor({ basePath: '/epiceditor' }).load();
+</script>

@@ -14,7 +14,8 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
-    @album = Album.new
+    @album = Album.new :author_id => current_user.id
+    @album.build_roles
   end
 
   # GET /albums/1/edit

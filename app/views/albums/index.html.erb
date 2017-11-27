@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
+<% content_for :content_header do %>
+	<h2>Albums</h2>
+	<% if role_present?( "author" ) %>
+		<%= link_to 'Add Album', new_album_path %>
+	<% end %>	
+<% end %>
 
-<h1>Albums</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.title %></td>
-        <td><%= album.description %></td>
-        <td><%= album.author_id %></td>
-        <td><%= link_to 'Show', album %></td>
-        <td><%= link_to 'Edit', edit_album_path(album) %></td>
-        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Album', new_album_path %>
+<ol id="albums">
+  <% @albums.each do |album| %>
+    <li id="album-<%= album.id %>">
+			<div class="album_title">
+				<%= link_to album.title, album %>
+				<% if role_present?( "admin" ) %>
+	      	<%= link_to 'Edit', edit_album_path(album) %>
+	      	<%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <p>
+                <strong>Roles:</strong><em><%= album.roles.map(&:name).join(', ')%></em>
+            </p>
+				<% end %>
+			</div>
+      <div class="album_author">
+				posted by <%= album.author.name %> | created on <%= album.created_at.to_date.inspect %>
+			</div>
+			<div class="album_description">
+				<%= album.description %>
+			</div>
+			<div class="photo_previews">
+				<% album.photos[0,10].each do |photo| %>
+					<%= image_tag photo.content.url(:thumb), :class => "photo_small" %>
+				<% end %>
+			</div>
+  <% end %>	
+</ol>
