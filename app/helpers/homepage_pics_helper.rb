@@ -1,0 +1,2 @@
+module HomepagePicsHelper
+end

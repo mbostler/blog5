@@ -1,0 +1,28 @@
+<%# form_with(model: homepage_pic, local: true) do |form| %>
+<%= form_for( homepage_pic) do |form| %>
+  <% if homepage_pic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(homepage_pic.errors.count, "error") %> prohibited this homepage_pic from being saved:</h2>
+
+      <ul>
+      <% homepage_pic.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.file_field :content, id: :homepage_pic_content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :alt_text %>
+    <%= form.text_area :alt_text, id: :homepage_pic_alt_text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

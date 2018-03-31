@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :homepage_pics
   get 'about/me'
 
   resources :sessions

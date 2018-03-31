@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @homepage_pic.content %>
+</p>
+
+<p>
+  <strong>Alt text:</strong>
+  <%= @homepage_pic.alt_text %>
+</p>
+
+<%= link_to 'Edit', edit_homepage_pic_path(@homepage_pic) %> |
+<%= link_to 'Back', homepage_pics_path %>

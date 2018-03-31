@@ -11,4 +11,12 @@ module ApplicationHelper
     obj.roles.include?( role )
   end
   
+  def banner_logo
+    return "[x]" if HomepagePic.none?
+    files = Dir[File.join(Rails.root, "app", "assets", "images", "homepage_photos", "*")]
+    sample_imagepath = files.sample
+    pic = HomepagePic.all.sample
+    image_tag pic.content.url(:medium), size: "160x100", alt: pic.alt_text, title: pic.alt_text
+  end
+  
 end

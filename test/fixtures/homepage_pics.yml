@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: homepage_pics
+#
+#  id                   :integer          not null, primary key
+#  content_file_name    :string
+#  content_content_type :string
+#  content_file_size    :integer
+#  content_updated_at   :datetime
+#  alt_text             :text
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: 
+  alt_text: MyText
+
+two:
+  content: 
+  alt_text: MyText
