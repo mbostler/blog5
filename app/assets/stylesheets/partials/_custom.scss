@@ -127,7 +127,11 @@ h1 a, h1 a:hover{
 }
 
 div.title{
-	border: 2px dashed black;
+/*    border: 2px dashed black;*/
+    margin-top: 10px;
+	border-bottom: 4px solid #DEDEDE;
+    padding-bottom: 3px;
+    margin-bottom: 5px;
 }
 
 div.login{
